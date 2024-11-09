@@ -2,7 +2,7 @@
 #   https://raw.githubusercontent.com/freechipsproject/chisel-bootcamp/master/Dockerfile
 
 # First stage : setup the system and environment
-FROM ubuntu:20.04 as base
+FROM ubuntu:22.04 AS base
 
 RUN \
     apt-get update && \
@@ -36,7 +36,7 @@ RUN mkdir -p $JUPYTER_CONFIG_DIR/custom
 RUN cp tutorial/custom.js $JUPYTER_CONFIG_DIR/custom/
 
 # Second stage - download Scala requirements and the Scala kernel
-FROM base as intermediate-builder
+FROM base AS intermediate-builder
 
 RUN mkdir /coursier_cache
 
@@ -51,7 +51,7 @@ RUN \
         --default=true \
         -o almond && \
     ./almond --install --global && \
-    \rm -rf almond couriser /root/.cache/coursier 
+    rm -rf almond couriser /root/.cache/coursier
 
 RUN \
     echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list && \
@@ -69,12 +69,12 @@ RUN \
 
 # Execute a notebook to ensure Chisel is downloaded into the image for offline work
 RUN make build
-RUN jupyter nbconvert --to notebook --output=/tmp/5-gen-hardware --execute tutorial/5-gen-hardware.ipynb
+RUN jupyter nbconvert --to notebook --output=/tmp/3-desc-arch --execute tutorial/3-desc-arch.ipynb
 
 # Last stage
-FROM base as final
+FROM base AS final
 
-# copy the Scala requirements and kernel into the image 
+# copy the Scala requirements and kernel into the image
 COPY --from=intermediate-builder /coursier_cache/ /coursier_cache/
 COPY --from=intermediate-builder /usr/local/share/jupyter/kernels/scala/ /usr/local/share/jupyter/kernels/scala/
 COPY --from=intermediate-builder /pillars/target/ /pillars/target/
