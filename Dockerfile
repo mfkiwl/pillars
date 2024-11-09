@@ -22,7 +22,7 @@ RUN pip3 install notebook
 RUN useradd -ms /bin/bash tutorial
 
 ENV SCALA_VERSION=2.12.10
-ENV ALMOND_VERSION=0.9.1
+ENV ALMOND_VERSION=0.10.9
 
 ENV COURSIER_CACHE=/coursier_cache
 

@@ -19,7 +19,7 @@ simulation.
 
 |  Package  |  Version  |
 |  :----: | :----: |
-| Java  | ≥ 8.0 |
+| Java  | ≥ 8.0, < 19.0 |
 | [Scala](https://www.scala-lang.org/download/)  | ≥ 2.12.10 |
 | [Chisel](https://github.com/freechipsproject/chisel3)  | ≥ 3.2.2 |
 | [Gurobi](https://www.gurobi.com/)  | ≥ 8.1.1 |
@@ -220,7 +220,4 @@ For more detailed information and paper reference, please refer to the following
   year    = {2021},
 } 
 ```
-
- 
-
 

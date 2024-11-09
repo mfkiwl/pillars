@@ -216,14 +216,15 @@ object Tutorial {
     val II = 1
     val MRRG = arch.getMRRG(II)
     val dfgFilename = "tutorial/Vadd_Reverse.dot"
-//    val dfgFilename = "dfg/accum/accum.dot"
+    //val dfgFilename = "dfg/accum/accum.dot"
     val dfg = DotReader.loadDot(dfgFilename, II)
     val mappingResultFilename = s"tutorial/ii$II"
 
     object Solver extends Enumeration {
       val Gurobi, Search, Z3Prover = Value
     }
-    val solver = Solver.Gurobi
+    //val solver = Solver.Gurobi
+    val solver = Solver.Search
     val separatedPR = true
     val scheduleControl = true
 
