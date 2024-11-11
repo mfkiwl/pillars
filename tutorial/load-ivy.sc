@@ -7,7 +7,7 @@ interp.repositories() ::: List(
 
 @
 
-interp.configureCompiler(x => x.settings.source.value = scala.tools.nsc.settings.ScalaVersion("2.12.10"))
+interp.configureCompiler(x => x.settings.source.value = scala.tools.nsc.settings.ScalaVersion("2.12.18"))
 
 // Uncomment and change to use proxy
 // System.setProperty("https.proxyHost", "proxy.example.com")
@@ -24,13 +24,13 @@ for (jar <- jar_files) {
     interp.load.cp(new java.io.File(jar).toURI.toURL)
 }
 
-import $ivy.`edu.berkeley.cs::chisel3:3.6.0`
+import $ivy.`edu.berkeley.cs::chisel3:3.6.1`
 import $ivy.`edu.berkeley.cs::chiseltest:0.6.1`
 import $ivy.`edu.berkeley.cs::firrtl-diagrammer:1.6.0`
 import $ivy.`edu.berkeley.cs::dsptools:1.2.0`
 import $ivy.`edu.berkeley.cs::rocket-dsptools:1.2.0`
 import $ivy.`org.scalanlp::breeze:0.13.2`
-//interp.load.plugin.ivy("edu.berkeley.cs" %% "chisel3-plugin" % "3.6.0")
+//interp.load.plugin.ivy("edu.berkeley.cs" %% "chisel3-plugin" % "3.6.1")
 
 // Convenience function to invoke Chisel and grab emitted Verilog.
 def getVerilog(dut: => chisel3.core.UserModule): String = {

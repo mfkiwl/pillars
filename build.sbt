@@ -28,9 +28,9 @@ name := "Pillars-project"
 
 version := "1.0.0"
 
-scalaVersion := "2.12.10"
+scalaVersion := "2.12.18"
 
-crossScalaVersions := Seq("2.12.10", "2.11.12")
+crossScalaVersions := Seq("2.12.18", "2.11.12")
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("snapshots"),
@@ -39,13 +39,13 @@ resolvers ++= Seq(
 
 // Provide a managed dependency on X if -DXVersion="" is supplied on the command line.
 val defaultVersions = Map(
-  "chisel3" -> "3.6.0",
+  "chisel3" -> "3.6.1",
   "chiseltest" -> "0.6.1",
   "firrtl" -> "1.6.0",
   "firrtl-diagrammer" -> "1.6.0"
 )
 
-addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.6.0" cross CrossVersion.full)
+addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.6.1" cross CrossVersion.full)
 libraryDependencies ++= Seq("chisel3","chiseltest","firrtl","firrtl-diagrammer").map {
   dep: String => "edu.berkeley.cs" %% dep % sys.props.getOrElse(dep + "Version", defaultVersions(dep)) }
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.10.3"

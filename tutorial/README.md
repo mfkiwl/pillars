@@ -11,7 +11,7 @@ You may skip the next step when a Scala kernel exists.
 
 ```
 curl -L -o coursier https://git.io/coursier-cli && chmod +x coursier
-SCALA_VERSION=2.12.10 ALMOND_VERSION=0.9.1
+SCALA_VERSION=2.12.18 ALMOND_VERSION=0.10.9
 ./coursier bootstrap -r jitpack \
     -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
     sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \

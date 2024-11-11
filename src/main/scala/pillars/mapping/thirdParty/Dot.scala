@@ -51,10 +51,10 @@ abstract class Dot(
     val tmpAttr = if (attrs == null) Map[String, String]() else attrs
     if (label != null) {
       s"""[label=${quote(label)} """ +
-        s"""${("" /: tmpAttr) { (acc, elem) => s"$acc ${elem._1}=${elem._2}" }}]"""
+        s"""${tmpAttr.foldLeft("") { (acc, elem) => s"$acc ${elem._1}=${elem._2}" }}]"""
     }
     else {
-      val ret = s"""[${("" /: tmpAttr) { (acc, elem) => s"$acc${elem._1} = ${elem._2}, " }}]"""
+      val ret = s"""[${tmpAttr.foldLeft("") { (acc, elem) => s"$acc${elem._1} = ${elem._2}, " }}]"""
       ret.substring(0, ret.length - 3) + "];"
     }
   }

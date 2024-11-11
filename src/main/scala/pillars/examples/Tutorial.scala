@@ -223,8 +223,8 @@ object Tutorial {
     object Solver extends Enumeration {
       val Gurobi, Search, Z3Prover = Value
     }
-    //val solver = Solver.Gurobi
-    val solver = Solver.Search
+    val solver = Solver.Gurobi
+    //val solver = Solver.Search
     val separatedPR = true
     val scheduleControl = true
 

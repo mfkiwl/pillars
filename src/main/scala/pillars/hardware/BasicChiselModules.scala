@@ -314,7 +314,7 @@ class Alu(funSelect: Int, w: Int, name: String = "ALU") extends Module {
 
   when(io.en & valid) {
     //    out := MuxLookup(io.configuration, input_b, funSeq)
-    setIO(out, MuxLookup(io.configuration, getData(inputB), funSeq), true.B)
+    setIO(out, MuxLookup(io.configuration, getData(inputB))(funSeq), true.B)
   }.otherwise {
     for (out <- io.outs) {
       setIO(out, 0.U)
@@ -493,7 +493,7 @@ class Multiplexer(numIn: Int, w: Int, name:String = "Mux")
   //  val input1 = io.inputs(1)
   val out = io.outs(0)
   val selectArray = (0 to numIn - 1).map(i => i.U -> io.inputs(i))
-  val muxIn0 = MuxLookup(io.configuration, io.inputs(0), selectArray)
+  val muxIn0 = MuxLookup(io.configuration, io.inputs(0))(selectArray)
 
   io.outs(0) := muxIn0
 }
@@ -557,9 +557,9 @@ class ADRESPE(w: Int) extends Module {
   val targets = List(3, 3, 4, 3)
   val dispatch = Module(new Dispatch(13, targets))
   dispatch.io.configuration := io.configuration
-  val muxIn0 = MuxLookup(dispatch.io.outs(0), rf.io.outs(0), Array(0.U -> input_0, 1.U -> input_1,
+  val muxIn0 = MuxLookup(dispatch.io.outs(0), rf.io.outs(0))(Array(0.U -> input_0, 1.U -> input_1,
     2.U -> input_2, 3.U -> input_3, 4.U -> rf.io.outs(0)))
-  val muxIn1 = MuxLookup(dispatch.io.outs(1), rf.io.outs(0), Array(0.U -> input_0, 1.U -> input_1,
+  val muxIn1 = MuxLookup(dispatch.io.outs(1), rf.io.outs(0))(Array(0.U -> input_0, 1.U -> input_1,
     2.U -> input_2, 3.U -> input_3, 4.U -> rf.io.outs(0)))
   alu.io.inputs(0) := muxIn0
   alu.io.inputs(1) := muxIn1
