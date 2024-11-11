@@ -48,10 +48,10 @@ val defaultVersions = Map(
 addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.6.1" cross CrossVersion.full)
 libraryDependencies ++= Seq("chisel3","chiseltest","firrtl","firrtl-diagrammer").map {
   dep: String => "edu.berkeley.cs" %% dep % sys.props.getOrElse(dep + "Version", defaultVersions(dep)) }
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.10.3"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.22.0"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.22.0"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.22.0"
+libraryDependencies += "com.typesafe.play" %% "play-json" % "2.9.2"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.24.1"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.24.1"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.24.1"
 
 scalacOptions := Seq("-unchecked", "-deprecation")
 scalacOptions ++= scalacOptionsVersion(scalaVersion.value)

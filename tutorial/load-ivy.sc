@@ -13,9 +13,10 @@ interp.configureCompiler(x => x.settings.source.value = scala.tools.nsc.settings
 // System.setProperty("https.proxyHost", "proxy.example.com")
 // System.setProperty("https.proxyPort", "3128")
 
-import $ivy.`com.typesafe.play::play-json:2.10.3`
-import $ivy.`org.apache.logging.log4j:log4j-core:2.22.0`
-import $ivy.`org.apache.logging.log4j:log4j-api:2.22.0`
+import $ivy.`com.typesafe.play::play-json:2.9.2`
+import $ivy.`org.apache.logging.log4j:log4j-core:2.24.1`
+import $ivy.`org.apache.logging.log4j:log4j-api:2.24.1`
+//import $ivy.`org.apache.logging.log4j:log4j-slf4j-impl:2.24.1`
 
 // Load the pillars package (in two JAR files)
 val jar_path = System.getProperty("user.dir") + s"/../target/scala-$scala_version/pillars-project_$scala_version-$pillars_version"
@@ -26,11 +27,14 @@ for (jar <- jar_files) {
 
 import $ivy.`edu.berkeley.cs::chisel3:3.6.1`
 import $ivy.`edu.berkeley.cs::chiseltest:0.6.1`
+import $ivy.`edu.berkeley.cs::firrtl:1.6.0`
 import $ivy.`edu.berkeley.cs::firrtl-diagrammer:1.6.0`
-import $ivy.`edu.berkeley.cs::dsptools:1.2.0`
-import $ivy.`edu.berkeley.cs::rocket-dsptools:1.2.0`
+import $ivy.`edu.berkeley.cs::dsptools:1.5.6`
+import $ivy.`edu.berkeley.cs::rocket-dsptools:1.2.6`
 import $ivy.`org.scalanlp::breeze:0.13.2`
 //interp.load.plugin.ivy("edu.berkeley.cs" %% "chisel3-plugin" % "3.6.1")
+
+//import $ivy.`org.scalatest::scalatest:3.2.19`
 
 // Convenience function to invoke Chisel and grab emitted Verilog.
 def getVerilog(dut: => chisel3.core.UserModule): String = {
