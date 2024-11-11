@@ -28,9 +28,9 @@ name := "Pillars-project"
 
 version := "1.0.0"
 
-scalaVersion := "2.12.18"
+scalaVersion := "2.12.12"
 
-crossScalaVersions := Seq("2.12.18", "2.11.12")
+crossScalaVersions := Seq("2.12.12", "2.11.12")
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("snapshots"),

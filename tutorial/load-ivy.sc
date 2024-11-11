@@ -7,7 +7,7 @@ interp.repositories() ::: List(
 
 @
 
-interp.configureCompiler(x => x.settings.source.value = scala.tools.nsc.settings.ScalaVersion("2.12.18"))
+interp.configureCompiler(x => x.settings.source.value = scala.tools.nsc.settings.ScalaVersion("2.12.12"))
 
 // Uncomment and change to use proxy
 // System.setProperty("https.proxyHost", "proxy.example.com")

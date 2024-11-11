@@ -20,7 +20,7 @@ RUN \
         && \
     rm -rf /var/lib/apt/lists/*
 
-ENV SCALA_VERSION=2.12.18
+ENV SCALA_VERSION=2.12.12
 ENV ALMOND_VERSION=0.10.9
 
 RUN useradd -ms /bin/bash tutorial
